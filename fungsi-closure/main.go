@@ -7,25 +7,6 @@ func pemisah(judul string)  {
 	fmt.Println(judul)
 }
 
-func findMax(numbers []int, max int) (int, func() []int)  {
-	var res []int
-	for _, e := range numbers {
-		if e < max {
-			res = append(res, e)
-		}
-	}
-	return len(res), func() []int {
-		return res
-	}
-	// Fungsi tanpa nama pun bisa disimpan ke dalam variabel dulu dengen contoh :
-	/*
-	var getNumbers = func() []int {
-		return res
-	}
-	return len(res), getNumbers
-	*/
-}
-
 func main()  {
 	var judul string
 	judul = "Closure Disimpan Sebagai Variabel"
@@ -83,4 +64,23 @@ func main()  {
 
 	fmt.Println("found \t:", howMany)
 	fmt.Println("value \t:", theNumbers)
+}
+
+func findMax(numbers []int, max int) (int, func() []int)  {
+	var res []int
+	for _, e := range numbers {
+		if e < max {
+			res = append(res, e)
+		}
+	}
+	return len(res), func() []int {
+		return res
+	}
+	// Fungsi tanpa nama pun bisa disimpan ke dalam variabel dulu dengen contoh :
+	/*
+	var getNumbers = func() []int {
+		return res
+	}
+	return len(res), getNumbers
+	*/
 }
